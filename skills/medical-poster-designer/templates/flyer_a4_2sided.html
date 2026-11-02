@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tờ rơi A4 (2 mặt): Chương trình đào tạo Thạc sĩ Đột quỵ và bệnh lý mạch máu não – UMP</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --green: #008A3C;
+    --deep: #005A26;
+    --navy: #12284C;
+    --paper: #F3F7F5;
+    --card: #FFFFFF;
+    --line: #CBDCD2;
+    --ink: #243746;
+    --muted: #52667A;
+    --gold: #FDE047;
+    --gold-bg: #FFFBEB;
+    --gold-border: #F59E0B;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+
+  html, body {
+    width: 210mm;
+    background: #FFFFFF;
+    font-family: 'BV', system-ui, -apple-system, sans-serif;
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .a4-page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    page-break-after: always;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto;
+  }
+
+  /* COMMON HEADER FOR FLYER */
+  .flyer-top {
+    background: #FFFFFF;
+    padding: 3.5mm 9mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.8mm solid var(--green);
+    flex-shrink: 0;
+  }
+
+  .flyer-top-left .k1 {
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .flyer-top-left .k2 {
+    font-size: 11pt;
+    font-weight: 800;
+    color: var(--navy);
+    margin-top: 0.4mm;
+  }
+
+  .flyer-top-left .k3 {
+    font-size: 8pt;
+    color: var(--muted);
+    margin-top: 0.3mm;
+  }
+
+  .flyer-logos {
+    display: flex;
+    align-items: center;
+    gap: 3.5mm;
+    flex-shrink: 0;
+  }
+
+  .flyer-logos img.ump {
+    height: 12.5mm;
+    display: block;
+  }
+
+  .flyer-logos .sep {
+    width: 0.35mm;
+    height: 11mm;
+    background: var(--line);
+  }
+
+  .flyer-logos .bm-wrap {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .flyer-logos .bm-wrap img {
+    height: 12.5mm;
+    display: block;
+  }
+
+  .flyer-logos .bm-wrap .t1 {
+    font-size: 7.2pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .flyer-logos .bm-wrap .t2 {
+    font-size: 6.5pt;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* HERO BANNER PAGE 1 */
+  .p1-hero {
+    background: linear-gradient(112deg, var(--deep) 0%, var(--green) 62%, #007A34 100%);
+    color: #FFFFFF;
+    padding: 5mm 9mm 6.5mm 9mm;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 76% 100%, 0 95%);
+    flex-shrink: 0;
+  }
+
+  .p1-hero .tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.16);
+    border: 0.3mm solid rgba(255, 255, 255, 0.35);
+    color: var(--gold);
+    font-size: 7.4pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.8mm 2.5mm;
+    border-radius: 1.5mm;
+  }
+
+  .p1-hero h1 {
+    font-size: 19pt;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-top: 1.8mm;
+    letter-spacing: -0.015em;
+  }
+
+  .p1-hero p.pos {
+    font-size: 8.6pt;
+    line-height: 1.38;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 1.6mm;
+  }
+
+  .p1-pills {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2mm;
+    margin-top: 3mm;
+  }
+
+  .p1-pill {
+    background: rgba(0, 36, 15, 0.45);
+    border: 0.25mm solid rgba(255, 255, 255, 0.28);
+    border-radius: 1.6mm;
+    padding: 1.5mm 2mm;
+  }
+
+  .p1-pill .pk {
+    font-size: 6pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .p1-pill .pv {
+    font-size: 7.6pt;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-top: 0.4mm;
+    line-height: 1.15;
+  }
+
+  /* CONTENT BODY */
+  .flyer-body {
+    flex: 1;
+    padding: 3mm 9mm 3.5mm 9mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3mm;
+    min-height: 0;
+  }
+
+  .sec-box {
+    background: var(--card);
+    border: 0.35mm solid var(--line);
+    border-top: 1.2mm solid var(--green);
+    border-radius: 2.2mm;
+    padding: 3.2mm 4.2mm;
+  }
+
+  .sec-box.navy {
+    border-top-color: var(--navy);
+  }
+
+  .sec-title {
+    font-size: 10.6pt;
+    font-weight: 800;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.8mm;
+    padding-bottom: 1.2mm;
+    border-bottom: 0.3mm solid #E5EFE9;
+  }
+
+  .sec-title span.sub {
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .lead-p {
+    font-size: 8.3pt;
+    line-height: 1.38;
+    color: var(--ink);
+    margin-bottom: 2.2mm;
+  }
+
+  .stats-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4mm;
+    margin-bottom: 2.2mm;
+  }
+
+  .st-card {
+    background: #F5FAF7;
+    border: 0.3mm solid #C5DFD0;
+    border-left: 1.2mm solid var(--green);
+    border-radius: 1.6mm;
+    padding: 1.8mm 2.4mm;
+  }
+
+  .st-card .n {
+    font-size: 12pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.05;
+  }
+
+  .st-card .u {
+    font-size: 6.9pt;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 0.4mm;
+  }
+
+  .st-card .d {
+    font-size: 7pt;
+    line-height: 1.28;
+    color: var(--ink);
+    margin-top: 0.8mm;
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4mm;
+  }
+
+  .bullet-list li {
+    position: relative;
+    padding-left: 3.2mm;
+    font-size: 8.1pt;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+  .bullet-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.5mm;
+    width: 1.5mm;
+    height: 1.5mm;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .bullet-list li b {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* DEPARTMENT SHOWCASE ON PAGE 1 */
+  .dept-split {
+    display: grid;
+    grid-template-columns: 78mm 1fr;
+    gap: 3.5mm;
+    align-items: stretch;
+  }
+
+  .dept-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+
+  .dept-photo-frame {
+    position: relative;
+    border-radius: 1.8mm;
+    overflow: hidden;
+    border: 0.35mm solid var(--line);
+    height: 44mm;
+    background: #FFFFFF;
+  }
+
+  .dept-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+
+  .dept-photo-frame .cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 40, 76, 0.88);
+    color: #FFFFFF;
+    font-size: 6.4pt;
+    padding: 0.9mm 1.8mm;
+    text-align: center;
+  }
+
+  .map-mini-row {
+    display: grid;
+    grid-template-columns: 25mm 1fr;
+    gap: 2.2mm;
+    background: #F4F8FA;
+    border: 0.3mm solid #CBD5E1;
+    border-radius: 1.8mm;
+    padding: 1.6mm;
+    height: 30mm;
+    align-items: center;
+  }
+
+  .map-mini-row img {
+    width: 100%;
+    height: 26.5mm;
+    object-fit: contain;
+    background: #FFFFFF;
+    border-radius: 1mm;
+  }
+
+  .map-mini-txt {
+    font-size: 7.1pt;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .map-mini-txt b {
+    color: var(--navy);
+    display: block;
+    margin-bottom: 0.5mm;
+    font-size: 7.5pt;
+  }
+
+  /* PAGE 2 STYLES */
+  .p2-banner {
+    background: var(--navy);
+    color: #FFFFFF;
+    padding: 3.5mm 9mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.9mm solid var(--green);
+    flex-shrink: 0;
+  }
+
+  .p2-banner h2 {
+    font-size: 11.8pt;
+    font-weight: 800;
+  }
+
+  .p2-banner span {
+    font-size: 7.4pt;
+    color: var(--gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.2mm;
+  }
+
+  .comp-table th {
+    background: var(--navy);
+    color: #FFFFFF;
+    font-size: 7.8pt;
+    font-weight: 700;
+    text-align: left;
+    padding: 1.6mm 2.8mm;
+  }
+
+  .comp-table td {
+    border-bottom: 0.25mm solid #DCE7E1;
+    padding: 1.8mm 2.8mm;
+    vertical-align: top;
+    font-size: 7.8pt;
+    line-height: 1.32;
+    color: var(--ink);
+  }
+
+  .comp-table tr:nth-child(even) td {
+    background: #F8FBF9;
+  }
+
+  .comp-table td.c-name {
+    width: 45mm;
+    font-weight: 800;
+    color: var(--deep);
+    border-right: 0.25mm solid #DCE7E1;
+  }
+
+  .chips-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8mm;
+    margin-bottom: 2mm;
+  }
+
+  .chip-m {
+    background: #EFF8F3;
+    border: 0.3mm solid #B8DEC8;
+    border-radius: 1.4mm;
+    padding: 1.2mm 2mm;
+    font-size: 7.4pt;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .chip-m b {
+    color: var(--green);
+    margin-right: 0.8mm;
+  }
+
+  .p2-split-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+
+  .adm-mini {
+    background: #F5FAF7;
+    border: 0.3mm solid #C5DFD0;
+    border-radius: 1.8mm;
+    padding: 2mm 2.6mm;
+    margin-bottom: 1.6mm;
+  }
+
+  .adm-mini:last-child {
+    margin-bottom: 0;
+  }
+
+  .adm-mini .h {
+    font-size: 8pt;
+    font-weight: 800;
+    color: var(--deep);
+    margin-bottom: 0.5mm;
+  }
+
+  .adm-mini p {
+    font-size: 7.6pt;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .qr-footer-box {
+    background: linear-gradient(120deg, var(--green) 0%, var(--deep) 100%);
+    color: #FFFFFF;
+    border-radius: 2.2mm;
+    padding: 3.2mm 4.5mm;
+    display: grid;
+    grid-template-columns: 24mm 1fr;
+    gap: 4mm;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .qr-footer-box .qr-w {
+    background: #FFFFFF;
+    padding: 1.6mm;
+    border-radius: 1.8mm;
+    width: 24mm;
+    height: 24mm;
+  }
+
+  .qr-footer-box .qr-w img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .qr-footer-box h4 {
+    font-size: 9.6pt;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 1mm;
+  }
+
+  .qr-footer-box .c-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8mm;
+    font-size: 7.7pt;
+    line-height: 1.28;
+  }
+
+  .flyer-foot {
+    height: 8mm;
+    background: var(--deep);
+    color: #FFFFFF;
+    padding: 0 9mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 7.4pt;
+    flex-shrink: 0;
+  }
+
+  .flyer-foot b {
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== MẶT 1 (PAGE 1) ==================== -->
+<div class="a4-page">
+  <header class="flyer-top">
+    <div class="flyer-top-left">
+      <div class="k1">Ấn phẩm thông tin đào tạo sau đại học</div>
+      <div class="k2">Khoa Y · Bộ môn Đột quỵ và Bệnh lý mạch máu não</div>
+      <div class="k3">Trường Đại học Y Dược – Đại học Quốc gia Hà Nội (VNU-UMP)</div>
+    </div>
+    <div class="flyer-logos">
+      <img class="ump" src="assets/img/logo-ump-wide.png" alt="UMP">
+      <div class="sep"></div>
+      <div class="bm-wrap">
+        <img src="assets/img/logo-stroke-center.jpg" alt="Trung tâm Đột quỵ BV Bạch Mai">
+        <div>
+          <div class="t1">TRUNG TÂM ĐỘT QUỴ</div>
+          <div class="t2">Bệnh viện Bạch Mai</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="p1-hero">
+    <span class="tag">Chương trình đào tạo trình độ Thạc sĩ Y học</span>
+    <h1>Chuyên ngành Đột quỵ và bệnh lý mạch máu não</h1>
+    <p class="pos">
+      Đào tạo sau đại học chuyên sâu đầu tiên kết hợp mô hình Viện – Trường giữa đại học nghiên cứu trọng điểm quốc gia (ĐHQGHN) và trung tâm đột quỵ lâm sàng tuyến cuối (Trung tâm Đột quỵ – Bệnh viện Bạch Mai) cùng các bệnh viện tuyến đầu tại Hà Nội.
+    </p>
+    <div class="p1-pills">
+      <div class="p1-pill"><div class="pk">Văn bằng</div><div class="pv">Thạc sĩ Y học</div></div>
+      <div class="p1-pill"><div class="pk">Thời gian</div><div class="pv">2 năm tập trung</div></div>
+      <div class="p1-pill"><div class="pk">Thực hành 24/7</div><div class="pv">TT Đột quỵ – Bạch Mai</div></div>
+      <div class="p1-pill"><div class="pk">Tuyển sinh</div><div class="pv">Quy chế ĐHQGHN</div></div>
+      <div class="p1-pill"><div class="pk">Chuẩn lâm sàng</div><div class="pv">Bộ Y tế &amp; WSO</div></div>
+    </div>
+  </section>
+
+  <main class="flyer-body">
+    <!-- Section 1: Why clinical doctors need this Master's program -->
+    <section class="sec-box">
+      <div class="sec-title">
+        <span>Tại sao bác sĩ lâm sàng cần chương trình Thạc sĩ chuyên sâu về đột quỵ?</span>
+        <span class="sub">Thực trạng dịch tễ &amp; nhân lực</span>
+      </div>
+      <p class="lead-p">
+        Trong thực hành cấp cứu và hồi sức thần kinh hiện đại, điều trị đột quỵ cấp đã chuyển mình mạnh mẽ từ chăm sóc triệu chứng đơn thuần sang các chiến lược tái tưới máu não khẩn cấp dựa trên hình ảnh học tưới máu và cửa sổ mô học.
+      </p>
+
+      <div class="stats-4">
+        <div class="st-card">
+          <div class="n">161</div>
+          <div class="u">ca / 100.000 dân / năm</div>
+          <div class="d">Tương đương ≈ 157.295 ca mắc mới mỗi năm; tỷ lệ hiện mắc 415 ca/100.000 dân.</div>
+        </div>
+        <div class="st-card">
+          <div class="n">81 → 316</div>
+          <div class="u">đơn vị đột quỵ</div>
+          <div class="d">Tăng từ 12 (2016) lên 81 đơn vị (2021); cả nước cần tối thiểu 316 đơn vị đạt chuẩn.</div>
+        </div>
+        <div class="st-card">
+          <div class="n">&lt; 25 phút</div>
+          <div class="u">thời gian “cửa – CT”</div>
+          <div class="d">Chuẩn hóa “cửa – kim” 27,2 – 36,0 phút và “cửa – bẹn” 63,1 – 86,3 phút.</div>
+        </div>
+        <div class="st-card">
+          <div class="n">15,1 – 18,8%</div>
+          <div class="u">tái thông mạch cấp</div>
+          <div class="d">Tại các bệnh viện tham gia hệ thống chất lượng RES-Q (tăng vượt bậc so với 2% năm 2010).</div>
+        </div>
+      </div>
+
+      <ul class="bullet-list">
+        <li><b>Khoảng trống nhân lực tại các tuyến bệnh viện:</b> Nghiên cứu hệ thống chăm sóc đột quỵ tại Việt Nam (<i>Mai Duy Tôn và cộng sự, Stroke: Vascular and Interventional Neurology, 2022</i>) chỉ rõ nhu cầu cấp thiết về bác sĩ được đào tạo sau đại học bài bản để vận hành 316 đơn vị đột quỵ trên toàn quốc.</li>
+        <li><b>Yêu cầu chuẩn hóa chất lượng điều trị theo chuẩn quốc tế (WSO / ANGELS):</b> Áp dụng quy trình cấp cứu chuẩn hóa giúp rút ngắn thời gian “cửa – kim”, “cửa – bẹn” và nâng cao tỷ lệ tái thông mạch bằng tiêu huyết khối đường tĩnh mạch (IVT) phối hợp lấy huyết khối cơ học (EVT).</li>
+        <li><b>Đáp ứng lộ trình bắt buộc của Bộ Y tế:</b> Theo Điều 20 Thông tư số 47/2016/TT-BYT, các bệnh viện đa khoa hạng đặc biệt, hạng I và tuyến tỉnh/huyện đều phải đào tạo, chuẩn hóa đội ngũ bác sĩ chuyên trách vận hành Đội đột quỵ, Đơn vị đột quỵ, Khoa đột quỵ và Trung tâm đột quỵ hoạt động liên tục 24/24 giờ.</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Introduction to the Department of Stroke and Cerebrovascular Diseases -->
+    <section class="sec-box navy">
+      <div class="sec-title">
+        <span>Giới thiệu Bộ môn Đột quỵ và Bệnh lý mạch máu não (thành lập năm 2022)</span>
+        <span class="sub">Hệ sinh thái Viện – Trường</span>
+      </div>
+
+      <div class="dept-split">
+        <div class="dept-photos">
+          <div class="dept-photo-frame">
+            <img src="original_design_assets/faculty_bomon_dotquy_cropped.jpg" alt="Tập thể cán bộ, giảng viên Bộ môn tại Trung tâm Đột quỵ – Bệnh viện Bạch Mai">
+            <div class="cap">Đội ngũ cán bộ, giảng viên Bộ môn tại Trung tâm Đột quỵ – BV Bạch Mai</div>
+          </div>
+          <div class="map-mini-row">
+            <img src="assets/img/map-stroke-units.png" alt="Bản đồ mạng lưới đột quỵ Việt Nam">
+            <div class="map-mini-txt">
+              <b>Bản đồ mạng lưới đột quỵ VN</b>
+              Phân bố các đơn vị đột quỵ trước 2020 và giai đoạn 2020 – 2021 (<i>Mai Duy Tôn và cs., 2022</i>).
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ul class="bullet-list">
+            <li><b>Ban Chủ nhiệm &amp; Đội ngũ giảng viên đầu ngành:</b>
+              <br>• <b>PGS.TS. Mai Duy Tôn</b> – Trưởng Bộ môn; Giám đốc Trung tâm Đột quỵ, Bệnh viện Bạch Mai.
+              <br>• <b>PGS.TS. Trần Anh Tuấn</b> – Phó Trưởng Bộ môn.
+              <br>• <b>TS. Đào Việt Phương</b> – Phó Trưởng Bộ môn.
+              <br>• Cùng giảng viên <b>BSNT. Nguyễn Thị Thùy Linh</b>, <b>ThS. Trương Thị Hoa</b> và các chuyên gia Phẫu thuật thần kinh, Điện quang can thiệp, Hồi sức cấp cứu, Phục hồi chức năng tuyến cuối.
+            </li>
+            <li><b>Chức năng và nhiệm vụ trọng tâm:</b> Đào tạo đại học, sau đại học và CME; hướng dẫn học viên công bố khoa học trong nước &amp; quốc tế; chuyển giao kỹ thuật điều trị đột quỵ chuyên sâu và hợp tác quốc tế.</li>
+            <li><b>Định hướng giai đoạn 2025 – 2030:</b> Đẩy mạnh đào tạo nhân lực sau đại học chất lượng cao và ứng dụng trí tuệ nhân tạo (AI), công nghệ số trong nghiên cứu và giảng dạy đột quỵ.</li>
+            <li><b>Thành tích nổi bật:</b> Nhận Bằng khen của Giám đốc ĐHQGHN năm 2024 (QĐ 175/QĐ-ĐHQGHN) và năm 2025 (QĐ 231/QĐ-ĐHQGHN) về thành tích xuất sắc trong NCKH và đổi mới sáng tạo.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="flyer-foot">
+    <span>“Cùng kiến tạo cơ hội và chia sẻ thành quả – Together we create opportunities and share achievement”</span>
+    <b>Mặt 1 / 2 · Tổng quan &amp; Thực trạng</b>
+  </footer>
+</div>
+
+<!-- ==================== MẶT 2 (PAGE 2) ==================== -->
+<div class="a4-page">
+  <header class="p2-banner">
+    <h2>Khung chương trình học, chuẩn năng lực lâm sàng &amp; thông tin tuyển sinh</h2>
+    <span>Thạc sĩ Đột quỵ và bệnh lý mạch máu não · UMP</span>
+  </header>
+
+  <main class="flyer-body">
+    <!-- 1. 8 Curriculum subjects & 4 Clinical Competence Pillars -->
+    <section class="sec-box">
+      <div class="sec-title">
+        <span>1. Tám học phần chuyên môn &amp; bốn nhóm năng lực lâm sàng cốt lõi</span>
+        <span class="sub">Bedside clinical competence</span>
+      </div>
+
+      <div class="chips-8">
+        <div class="chip-m"><b>01.</b> Đột quỵ &amp; bệnh lý mạch não</div>
+        <div class="chip-m"><b>02.</b> Bệnh lý thần kinh</div>
+        <div class="chip-m"><b>03.</b> Hồi sức cấp cứu – chống độc</div>
+        <div class="chip-m"><b>04.</b> Phẫu thuật thần kinh</div>
+        <div class="chip-m"><b>05.</b> Phục hồi chức năng sau đột quỵ</div>
+        <div class="chip-m"><b>06.</b> Bệnh lý tâm thần</div>
+        <div class="chip-m"><b>07.</b> Bệnh lý tim &amp; mạch máu</div>
+        <div class="chip-m"><b>08.</b> Nghiên cứu khoa học</div>
+      </div>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Nhóm năng lực chuyên môn</th>
+            <th>Nội dung kỹ thuật và kỹ năng lâm sàng được trang bị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-name">1. Chẩn đoán định khu &amp; điều trị tái thông tối cấp</td>
+            <td>
+              • Định khu tổn thương thần kinh – mạch máu từ lâm sàng đến hình ảnh học đa mô thức (CT, CTA, CTP, MRI khuếch tán, DSA), định lượng lõi nhồi máu (ischemic core) và vùng tranh tối tranh sáng (penumbra).<br>
+              • Làm chủ quy trình tiêu huyết khối đường tĩnh mạch (IVT) và phối hợp lấy huyết khối cơ học đường nội mạch (EVT) trong cửa sổ chuẩn và cửa sổ mở rộng.
+            </td>
+          </tr>
+          <tr>
+            <td class="c-name">2. Hồi sức tích cực thần kinh – đột quỵ cấp</td>
+            <td>
+              • Quản lý toàn diện bệnh nhân đột quỵ nặng tại đơn vị hồi sức thần kinh (Neuro-ICU): kiểm soát huyết áp mục tiêu theo từng thể bệnh, xử trí phù não ác tính, chuyển dạng xuất huyết (HT), xuất huyết nội sọ (ICH), xuất huyết dưới nhện (SAH), huyết khối tĩnh mạch não (CVT).<br>
+              • Thực hành thông khí nhân tạo bảo vệ não, siêu âm Doppler xuyên sọ (TCD) tại giường và chỉ định phẫu thuật mở sọ giải ép / lấy máu tụ.
+            </td>
+          </tr>
+          <tr>
+            <td class="c-name">3. Quản lý căn nguyên &amp; dự phòng thứ phát tối ưu</td>
+            <td>
+              • Chẩn đoán căn nguyên chuyên sâu theo phân loại TOAST / SSS-TOAST: vữa xơ mạch máu lớn (LAA) đoạn nội sọ (ICAD) và ngoại sọ (ECAD), lấp mạch từ tim (rung nhĩ, bệnh van tim), bệnh lý mạch máu nhỏ.<br>
+              • Thực hành siêu âm Duplex mạch máu ngoài sọ, đọc phim dựng hình mạch cảnh – nội sọ (CTA/MRA), thiết lập phác đồ điều trị nội khoa tối ưu (BMT) và chỉ định đặt stent (CAS) hoặc bóc tách nội mạc động mạch cảnh (CEA).
+            </td>
+          </tr>
+          <tr>
+            <td class="c-name">4. Tổ chức mạng lưới, phục hồi chức năng &amp; NCKH</td>
+            <td>
+              • Xây dựng và vận hành Đội đột quỵ, Đơn vị đột quỵ, Khoa đột quỵ và Trung tâm đột quỵ theo Thông tư số 47/2016/TT-BYT; quản lý chỉ số chất lượng WSO/ANGELS (RES-Q).<br>
+              • Triển khai phục hồi chức năng thần kinh sớm (vận động, ngôn ngữ trị liệu, rối loạn nuốt), quản lý rối loạn nhận thức – tâm thần sau đột quỵ và thực hiện nghiên cứu lâm sàng ứng dụng trí tuệ nhân tạo (AI).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2. Admission Criteria & Circular 47 Output Standards -->
+    <div class="p2-split-2">
+      <section class="sec-box navy">
+        <div class="sec-title">
+          <span>2. Đối tượng &amp; điều kiện đăng ký dự tuyển</span>
+        </div>
+        <div class="adm-mini">
+          <div class="h">● Đối tượng 01 (Dự thi ngay sau tốt nghiệp đại học):</div>
+          <p>Thí sinh là <b>cán bộ của các Trường Đại học Y Dược</b> hoặc <b>bác sĩ của các bệnh viện thực hành chính</b> của các Trường Đại học Y Dược được dự thi ngay sau khi tốt nghiệp đại học.</p>
+        </div>
+        <div class="adm-mini">
+          <div class="h">● Đối tượng 02 (Các đối tượng khác):</div>
+          <p>Đáp ứng một trong các yêu cầu sau:<br>
+            1. Có <b>chứng chỉ hành nghề y khoa</b> (giấy phép hành nghề);<br>
+            2. Hoặc đã có <b>chứng chỉ cơ bản</b>;<br>
+            3. Hoặc đã học tập/làm việc trong lĩnh vực chuyên ngành từ <b>18 tháng trở lên</b> tính đến ngày dự thi.
+          </p>
+        </div>
+        <p style="font-size:7.4pt; color:var(--muted); margin-top:1.5mm; line-height:1.3;">
+          <b>Định hướng chuyên khoa:</b> Bác sĩ Cấp cứu, Hồi sức tích cực, Cấp cứu ngoại viện 115, Thần kinh, Đột quỵ, Nội khoa, Tim mạch, Chẩn đoán hình ảnh và Phục hồi chức năng.
+        </p>
+      </section>
+
+      <section class="sec-box">
+        <div class="sec-title">
+          <span>3. Chuẩn đầu ra theo Thông tư 47/2016/TT-BYT</span>
+        </div>
+        <ul class="bullet-list" style="gap:1.8mm;">
+          <li><b>1. Đội đột quỵ (&lt; 100 bệnh nhân/năm):</b> Làm chủ quy trình đánh giá nhanh, xử trí cấp cứu ban đầu và kết nối chuyển tuyến an toàn.</li>
+          <li><b>2. Đơn vị đột quỵ (&lt; 500 BN/năm, quy mô &lt; 20 giường):</b> Triển khai thường quy tiêu huyết khối đường tĩnh mạch (IVT), điều trị tích cực và dự phòng tái phát.</li>
+          <li><b>3. Khoa đột quỵ (&lt; 1.000 BN/năm, quy mô &lt; 50 giường):</b> Điều trị nội khoa toàn diện, phối hợp thực hiện can thiệp mạch cấp cứu.</li>
+          <li><b>4. Trung tâm đột quỵ (≥ 1.000 BN/năm, quy mô ≥ 50 giường):</b> Điều phối đa chuyên khoa giữa nội thần kinh – đột quỵ, can thiệp nội mạch, phẫu thuật thần kinh và phục hồi chức năng chuyên sâu.</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- 3. QR Code & Contact Footer Card -->
+    <section class="qr-footer-box">
+      <div class="qr-w">
+        <img src="assets/img/qr.svg" alt="QR UMP">
+      </div>
+      <div>
+        <h4>Quét mã QR để tra cứu thông báo tuyển sinh &amp; hồ sơ dự thi</h4>
+        <div class="c-lines">
+          <div><b>• Văn phòng Bộ môn:</b> Trung tâm Đột quỵ, Tòa nhà A10, Bệnh viện Bạch Mai, Số 78 Giải Phóng, Đống Đa, Hà Nội.</div>
+          <div><b>• Trụ sở Trường ĐH Y Dược – ĐHQGHN:</b> Nhà Y1, Số 144 Xuân Thủy (Cổng chính: Số 28 Phạm Văn Đồng), Cầu Giấy, Hà Nội.</div>
+          <div><b>• Điện thoại:</b> (024) 3745 0188 &nbsp;|&nbsp; <b>Email:</b> khoay.ump@vnu.edu.vn &nbsp;|&nbsp; <b>Website:</b> https://ump.vnu.edu.vn</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="flyer-foot">
+    <span>Bộ môn Đột quỵ và Bệnh lý mạch máu não – Trường Đại học Y Dược, ĐHQGHN</span>
+    <b>Đột quỵ – Mỗi phút giây đều quý giá (Time is brain) · Mặt 2 / 2</b>
+  </footer>
+</div>
+
+</body>
+</html>

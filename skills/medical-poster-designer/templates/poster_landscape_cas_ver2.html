@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Poster ngang Version 2 (120x90 cm): Chương trình đào tạo Thạc sĩ Đột quỵ và bệnh lý mạch máu não – UMP</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root {
+    --teal-dark: #0B4630;
+    --teal-mid: #115E40;
+    --green-ump: #008A3C;
+    --navy: #12284C;
+    --wedge: #D8E8DF;
+    --paper: #FFFFFF;
+    --soft-bg: #F3FAF6;
+    --ink: #1B2B38;
+    --muted: #4A6072;
+    --line: #C2DBD0;
+    --gold: #FDE047;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    size: 1200mm 900mm;
+    margin: 0;
+  }
+
+  html, body {
+    width: 1200mm;
+    height: 900mm;
+    background: var(--paper);
+    font-family: 'BV', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .poster {
+    width: 1200mm;
+    height: 900mm;
+    position: relative;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  /* ==========================================================================
+     GEOMETRIC BACKGROUND LAYERS (True CAS in Brain Health Polygon Architecture)
+     ========================================================================== */
+  .top-booth-bar {
+    height: 14mm;
+    width: 100%;
+    background: linear-gradient(90deg, var(--navy) 0%, #0E3F30 50%, var(--teal-dark) 100%);
+    border-bottom: 1.6mm solid var(--gold);
+    flex-shrink: 0;
+    z-index: 20;
+  }
+
+  /* Light grey-mint angled wedge above the main polygon (matches CAS Brain Health) */
+  .bg-wedge-left {
+    position: absolute;
+    top: 98mm;
+    left: 0;
+    width: 1200mm;
+    height: 150mm;
+    background: var(--wedge);
+    clip-path: polygon(0 25%, 54% 0, 100% 38%, 100% 100%, 0 100%);
+    z-index: 1;
+  }
+
+  /* Giant Central Angled Polygon (Dominates the center of the poster) */
+  .bg-central-polygon {
+    position: absolute;
+    top: 118mm;
+    left: 0;
+    width: 1200mm;
+    height: 495mm;
+    background: linear-gradient(108deg, #083825 0%, #0F593B 48%, #0A432C 100%);
+    clip-path: polygon(0 0, 100% 5.5%, 100% 96%, 0 85%);
+    z-index: 2;
+    box-shadow: 0 6mm 18mm rgba(12, 50, 35, 0.18);
+  }
+
+  .bg-central-polygon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 46% 32%, rgba(255,255,255,0.09) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     1. TOP WHITE HEADER: QUICK FACTS (LEFT) + LARGE LOGOS (RIGHT)
+     ========================================================================== */
+  .header-zone {
+    position: relative;
+    z-index: 10;
+    height: 104mm;
+    padding: 6mm 32mm 0 32mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .facts-row {
+    display: flex;
+    align-items: center;
+    gap: 10mm;
+  }
+
+  .fact-pill {
+    display: flex;
+    align-items: center;
+    gap: 4.2mm;
+    padding-right: 10mm;
+    border-right: 0.6mm solid #D0E0D8;
+  }
+
+  .fact-pill:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .fact-ic-box {
+    width: 22mm;
+    height: 22mm;
+    border-radius: 4.5mm;
+    background: #E8F5EE;
+    border: 0.6mm solid #A3D9BC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fact-ic-box svg {
+    width: 13mm;
+    height: 13mm;
+    stroke: var(--teal-dark);
+    fill: none;
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .fact-pill .f-lbl {
+    font-size: 17.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    line-height: 1.15;
+  }
+
+  .fact-pill .f-val {
+    font-size: 25pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.18;
+    margin-top: 1mm;
+    white-space: nowrap;
+  }
+
+  .brand-cluster {
+    display: flex;
+    align-items: center;
+    gap: 8.5mm;
+    background: #FFFFFF;
+    padding: 4.5mm 8mm;
+    border-radius: 5mm;
+    box-shadow: 0 3mm 12mm rgba(18, 40, 76, 0.07);
+    border: 0.6mm solid #DCEAE2;
+  }
+
+  .brand-cluster img.ump-logo {
+    height: 55mm;
+    width: auto;
+    display: block;
+  }
+
+  .brand-divider {
+    width: 0.7mm;
+    height: 50mm;
+    background: #CBDAD2;
+  }
+
+  .bm-brand {
+    display: flex;
+    align-items: center;
+    gap: 4.5mm;
+  }
+
+  .bm-brand img {
+    height: 56mm;
+    width: auto;
+    display: block;
+  }
+
+  .bm-brand .bm-title {
+    font-size: 22.5pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  .bm-brand .bm-sub {
+    font-size: 18.5pt;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 1mm;
+  }
+
+  /* ==========================================================================
+     2. CENTRAL HERO ZONE: GIANT CENTERED TITLE IN MIDDLE OF POSTER
+     ========================================================================== */
+  .central-hero-zone {
+    position: relative;
+    z-index: 10;
+    padding: 22mm 32mm 8mm 32mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hero-center-stage {
+    text-align: center;
+    max-width: 1100mm;
+    margin: 0 auto;
+    color: #FFFFFF;
+  }
+
+  .hero-kicker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4mm;
+    background: rgba(5, 32, 20, 0.9);
+    border: 0.7mm solid var(--gold);
+    color: var(--gold);
+    font-size: 25pt;
+    font-weight: 800;
+    padding: 3mm 11mm;
+    border-radius: 99mm;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 2mm 8mm rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-main-title {
+    font-size: 94pt;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: #FFFFFF;
+    margin-top: 5.5mm;
+    text-shadow: 0 3mm 12mm rgba(0, 20, 9, 0.45);
+  }
+
+  .hero-main-title span {
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 28.5pt;
+    font-weight: 500;
+    line-height: 1.34;
+    color: rgba(255, 255, 255, 0.97);
+    max-width: 1040mm;
+    margin: 5mm auto 0 auto;
+  }
+
+  /* ==========================================================================
+     3. FLOATING CURRICULUM MODULE CARDS + CAS-STYLE QR PANEL
+        (Floating directly over the lower edge of the Central Polygon like CAS Brain Health)
+     ========================================================================== */
+  .middle-overlap-row {
+    position: relative;
+    z-index: 12;
+    margin-top: 6mm;
+    padding: 0 32mm;
+    display: grid;
+    grid-template-columns: 810mm 1fr;
+    gap: 14mm;
+    align-items: end;
+    flex-shrink: 0;
+  }
+
+  .curriculum-float-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5mm;
+  }
+
+  .float-zone-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2mm;
+  }
+
+  .float-zone-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 4mm;
+    font-size: 36pt;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-shadow: 0 2mm 6mm rgba(0, 20, 10, 0.4);
+  }
+
+  .float-zone-title::before {
+    content: "";
+    width: 5.5mm;
+    height: 11mm;
+    border-radius: 1.5mm;
+    background: var(--gold);
+  }
+
+  .float-zone-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 20pt;
+    font-weight: 800;
+    padding: 2mm 6mm;
+    border-radius: 3mm;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2mm 6mm rgba(0, 0, 0, 0.2);
+  }
+
+  /* 8 Standalone Floating White Module Cards (Like CAS Brain Health Module 1, Module 2...) */
+  .modules-grid-8 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5.2mm;
+  }
+
+  .mod-card {
+    background: #FFFFFF;
+    border: 0.7mm solid #B8D8C8;
+    border-top: 3.5mm solid var(--green-ump);
+    border-radius: 4.5mm;
+    padding: 5.5mm 6mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5mm;
+    height: 92mm;
+    box-shadow: 0 5mm 16mm rgba(12, 42, 30, 0.16);
+  }
+
+  .mod-card:nth-child(even) {
+    border-top-color: var(--navy);
+    border-color: #C2D4E6;
+  }
+
+  .mod-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2mm;
+  }
+
+  .mod-pill {
+    font-size: 17pt;
+    font-weight: 800;
+    color: #FFFFFF;
+    background: var(--green-ump);
+    padding: 1.4mm 4mm;
+    border-radius: 2.2mm;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .mod-card:nth-child(even) .mod-pill {
+    background: var(--navy);
+  }
+
+  .mod-ic-circle {
+    width: 14mm;
+    height: 14mm;
+    border-radius: 50%;
+    background: #E8F5EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mod-card:nth-child(even) .mod-ic-circle {
+    background: #EDF2F8;
+  }
+
+  .mod-ic-circle svg {
+    width: 8.5mm;
+    height: 8.5mm;
+    stroke: var(--teal-dark);
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mod-card:nth-child(even) .mod-ic-circle svg {
+    stroke: var(--navy);
+  }
+
+  .mod-card h3 {
+    font-size: 27pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  .mod-card p {
+    font-size: 21pt;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.28;
+  }
+
+  /* Right Side of Central Polygon: CAS-style QR + Contact Block + 2 Key Stats */
+  .right-polygon-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5.5mm;
+    height: 189.2mm;
+  }
+
+  .cas-qr-box {
+    background: rgba(5, 34, 21, 0.9);
+    border: 0.8mm solid rgba(255, 255, 255, 0.5);
+    border-left: 3.5mm solid var(--gold);
+    border-radius: 5mm;
+    padding: 6mm 7mm;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    box-shadow: 0 5mm 16mm rgba(0, 0, 0, 0.22);
+  }
+
+  .cas-qr-main {
+    display: flex;
+    align-items: center;
+    gap: 6.5mm;
+  }
+
+  .cas-qr-img {
+    width: 78mm;
+    height: 78mm;
+    background: #FFFFFF;
+    padding: 4mm;
+    border-radius: 3.5mm;
+    flex-shrink: 0;
+  }
+
+  .cas-qr-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .cas-qr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+
+  .cas-qr-text .q-kicker {
+    font-size: 18pt;
+    font-weight: 800;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cas-qr-text .q-line {
+    font-size: 21pt;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.96);
+    line-height: 1.22;
+  }
+
+  .cas-qr-text .q-link {
+    font-size: 27pt;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 1.5mm;
+  }
+
+  .cas-qr-text .q-mail {
+    font-size: 21pt;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 1.2mm;
+  }
+
+  .cas-addr-box {
+    border-top: 0.5mm solid rgba(255, 255, 255, 0.3);
+    padding-top: 3.5mm;
+    font-size: 18.5pt;
+    line-height: 1.28;
+    color: rgba(255, 255, 255, 0.96);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2mm;
+  }
+
+  .cas-addr-box b {
+    color: var(--gold);
+    font-weight: 800;
+  }
+
+  .mini-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.5mm;
+  }
+
+  .m-stat-card {
+    background: #FFFFFF;
+    border: 0.7mm solid #B5D5C5;
+    border-left: 3.2mm solid var(--teal-dark);
+    border-radius: 4mm;
+    padding: 4.2mm 5.2mm;
+    box-shadow: 0 4mm 12mm rgba(18, 40, 76, 0.1);
+  }
+
+  .m-stat-card .ms-num {
+    font-size: 27.5pt;
+    font-weight: 800;
+    color: var(--teal-dark);
+    line-height: 1.08;
+  }
+
+  .m-stat-card .ms-lbl {
+    font-size: 18pt;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.22;
+    margin-top: 1mm;
+  }
+
+  /* ==========================================================================
+     4. BOTTOM WHITE ZONE: PROMINENT "ĐỐI TƯỢNG ĐĂNG KÝ DỰ TUYỂN" (WHO CAN APPLY)
+        + FACULTY & CLINICAL PRACTICE SHOWCASE ON RIGHT (Exact 252mm height, zero empty space)
+     ========================================================================== */
+  .bottom-white-zone {
+    position: relative;
+    z-index: 10;
+    height: 256mm;
+    padding: 7mm 32mm 7mm 32mm;
+    display: grid;
+    grid-template-columns: 695mm 1fr;
+    gap: 14mm;
+    flex-shrink: 0;
+  }
+
+  .admission-showcase {
+    background: #FFFFFF;
+    border: 0.8mm solid #B5D5C5;
+    border-top: 4.2mm solid var(--navy);
+    border-radius: 6mm;
+    padding: 6.5mm 8.5mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4mm 15mm rgba(18, 40, 76, 0.06);
+  }
+
+  .sec-banner-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 3.5mm;
+    border-bottom: 0.6mm solid #D7E8DF;
+    margin-bottom: 4.5mm;
+  }
+
+  .sec-banner-head h2 {
+    font-size: 35pt;
+    font-weight: 800;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    line-height: 1.12;
+  }
+
+  .sec-banner-head h2::before {
+    content: "";
+    width: 5mm;
+    height: 10mm;
+    border-radius: 1.5mm;
+    background: var(--navy);
+  }
+
+  .sec-badge {
+    background: var(--navy);
+    color: #FFFFFF;
+    font-size: 18.5pt;
+    font-weight: 800;
+    padding: 1.8mm 5mm;
+    border-radius: 2.8mm;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .adm-stack-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5mm;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .adm-wide-card {
+    background: #F3FAF6;
+    border: 0.6mm solid #B2DBC4;
+    border-left: 3.2mm solid var(--green-ump);
+    border-radius: 4.2mm;
+    padding: 4.5mm 6.5mm;
+    display: grid;
+    grid-template-columns: 28mm 1fr 26mm;
+    gap: 6mm;
+    align-items: center;
+    flex: 1;
+  }
+
+  .adm-wide-card.card-02 {
+    background: #F7FAFC;
+    border-color: #C2D4E8;
+    border-left-color: var(--navy);
+  }
+
+  .adm-circle {
+    width: 28mm;
+    height: 28mm;
+    border-radius: 50%;
+    background: var(--green-ump);
+    color: #FFFFFF;
+    font-size: 35pt;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2mm 6mm rgba(0, 138, 60, 0.25);
+  }
+
+  .adm-wide-card.card-02 .adm-circle {
+    background: var(--navy);
+    box-shadow: 0 2mm 6mm rgba(18, 40, 76, 0.25);
+  }
+
+  .adm-wide-body h3 {
+    font-size: 25.5pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.5mm;
+  }
+
+  .adm-card-text {
+    font-size: 22.5pt;
+    line-height: 1.32;
+    color: var(--ink);
+  }
+
+  .adm-card-text b {
+    color: var(--navy);
+    font-weight: 800;
+  }
+
+  .adm-check-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+    margin-top: 1.2mm;
+  }
+
+  .adm-check-list li {
+    position: relative;
+    padding-left: 6.5mm;
+    font-size: 22pt;
+    line-height: 1.28;
+    color: var(--ink);
+  }
+
+  .adm-check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3.2mm;
+    width: 3.5mm;
+    height: 3.5mm;
+    border-radius: 50%;
+    background: var(--navy);
+  }
+
+  .adm-right-icon {
+    width: 26mm;
+    height: 26mm;
+    border-radius: 4.5mm;
+    background: #E2F3E9;
+    border: 0.5mm solid #A9D8BE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .adm-wide-card.card-02 .adm-right-icon {
+    background: #E8F0F8;
+    border-color: #B8CCE2;
+  }
+
+  .adm-right-icon svg {
+    width: 15mm;
+    height: 15mm;
+    stroke: var(--teal-dark);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .adm-wide-card.card-02 .adm-right-icon svg {
+    stroke: var(--navy);
+  }
+
+  .adm-bottom-bar {
+    margin-top: 4mm;
+    background: #ECF7F0;
+    border: 0.55mm solid #A9D8BE;
+    border-left: 3mm solid var(--teal-dark);
+    border-radius: 3.5mm;
+    padding: 3.5mm 5.5mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5mm;
+  }
+
+  .adm-bottom-bar .ab-txt {
+    font-size: 19.5pt;
+    line-height: 1.24;
+    color: var(--ink);
+  }
+
+  .adm-bottom-bar .ab-txt b {
+    color: var(--teal-dark);
+    font-weight: 800;
+  }
+
+  .tier-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 2.2mm;
+    flex-shrink: 0;
+  }
+
+  .t-pill {
+    background: var(--navy);
+    color: #FFFFFF;
+    font-size: 16pt;
+    font-weight: 800;
+    padding: 1.6mm 3.5mm;
+    border-radius: 2.2mm;
+    white-space: nowrap;
+  }
+
+  .t-pill:nth-child(even) {
+    background: var(--teal-dark);
+  }
+
+  /* Right Side of Bottom Zone: Authentic Department Photo + Leadership */
+  .department-showcase {
+    background: #FFFFFF;
+    border: 0.8mm solid #B5D5C5;
+    border-top: 4.2mm solid var(--teal-dark);
+    border-radius: 6mm;
+    padding: 6.5mm 8mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4mm 15mm rgba(18, 40, 76, 0.06);
+  }
+
+  .dept-content-grid {
+    display: grid;
+    grid-template-columns: 205mm 1fr;
+    gap: 5.5mm;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .dept-photo-wrap {
+    position: relative;
+    border-radius: 4mm;
+    overflow: hidden;
+    border: 0.6mm solid var(--line);
+    height: 100%;
+  }
+
+  .dept-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+
+  .dept-photo-wrap .dp-badge {
+    position: absolute;
+    top: 2.5mm;
+    left: 2.5mm;
+    background: rgba(11, 70, 48, 0.92);
+    color: #FFFFFF;
+    font-size: 14pt;
+    font-weight: 800;
+    padding: 1mm 3.2mm;
+    border-radius: 2mm;
+    text-transform: uppercase;
+  }
+
+  .dept-photo-wrap .dp-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 40, 76, 0.92);
+    color: #FFFFFF;
+    font-size: 15.5pt;
+    font-weight: 700;
+    padding: 2mm 3mm;
+    text-align: center;
+    line-height: 1.18;
+  }
+
+  .dept-faculty-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5mm;
+    flex: 1;
+  }
+
+  .df-card {
+    flex: 1;
+    background: var(--soft-bg);
+    border: 0.5mm solid #C5DDD1;
+    border-left: 2.5mm solid var(--green-ump);
+    border-radius: 3mm;
+    padding: 2.4mm 4.2mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .df-card.navy-l {
+    border-left-color: var(--navy);
+    background: #F7FAFC;
+  }
+
+  .df-role {
+    font-size: 15pt;
+    font-weight: 800;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .df-name {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.14;
+    margin-top: 0.3mm;
+  }
+
+  .df-pos {
+    font-size: 17pt;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-top: 0.3mm;
+  }
+
+  /* ==========================================================================
+     5. FOOTER BAR
+     ========================================================================== */
+  .footer-strip {
+    position: relative;
+    z-index: 15;
+    height: 28mm;
+    background: var(--navy);
+    color: #FFFFFF;
+    padding: 0 32mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1.4mm solid var(--gold);
+    flex-shrink: 0;
+  }
+
+  .footer-strip .f-left {
+    font-size: 21.5pt;
+    font-weight: 700;
+  }
+
+  .footer-strip .f-left span {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.84);
+    margin-left: 2.5mm;
+  }
+
+  .footer-strip .f-right {
+    font-size: 23pt;
+    font-weight: 800;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- Top Booth Bar + CAS-Style Angled Polygon Background Layers -->
+  <div class="top-booth-bar"></div>
+  <div class="bg-wedge-left"></div>
+  <div class="bg-central-polygon"></div>
+
+  <!-- 1. TOP WHITE HEADER (Quick Facts + Official Logos) -->
+  <header class="header-zone">
+    <div class="facts-row">
+      <div class="fact-pill">
+        <div class="fact-ic-box">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div>
+          <div class="f-lbl">Văn bằng đào tạo</div>
+          <div class="f-val">Thạc sĩ Y học</div>
+        </div>
+      </div>
+
+      <div class="fact-pill">
+        <div class="fact-ic-box">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </div>
+        <div>
+          <div class="f-lbl">Thời gian đào tạo</div>
+          <div class="f-val">2 năm (tập trung)</div>
+        </div>
+      </div>
+
+      <div class="fact-pill">
+        <div class="fact-ic-box">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+        </div>
+        <div>
+          <div class="f-lbl">Tuyển sinh hằng năm</div>
+          <div class="f-val">Theo quy chế ĐHQGHN</div>
+        </div>
+      </div>
+
+      <div class="fact-pill">
+        <div class="fact-ic-box">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 6v10"/></svg>
+        </div>
+        <div>
+          <div class="f-lbl">Thực hành lâm sàng 24/7</div>
+          <div class="f-val">TT Đột quỵ – BV Bạch Mai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-cluster">
+      <img class="ump-logo" src="assets/img/logo-ump-wide.png" alt="Trường Đại học Y Dược – ĐHQGHN">
+      <div class="brand-divider"></div>
+      <div class="bm-brand">
+        <img src="assets/img/logo-stroke-center.jpg" alt="Trung tâm Đột quỵ – Bệnh viện Bạch Mai">
+        <div>
+          <div class="bm-title">TRUNG TÂM ĐỘT QUỴ</div>
+          <div class="bm-sub">Bệnh viện Bạch Mai</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. CENTRAL HERO ZONE: CENTERED PROMINENT TITLE -->
+  <section class="central-hero-zone">
+    <div class="hero-center-stage">
+      <div class="hero-kicker-pill">
+        Trường Đại học Y Dược – Đại học Quốc gia Hà Nội · Bộ môn Đột quỵ và Bệnh lý mạch máu não
+      </div>
+      <h1 class="hero-main-title">
+        Chương trình đào tạo Thạc sĩ<br>
+        <span>Đột quỵ và bệnh lý mạch máu não</span>
+      </h1>
+      <p class="hero-subtitle">
+        Chương trình đào tạo sau đại học chuyên sâu kết hợp chặt chẽ lý thuyết thần kinh – mạch máu hiện đại với thực hành cấp cứu tối cấp, hồi sức thần kinh và can thiệp nội mạch 24/24 giờ tại Trung tâm Đột quỵ – Bệnh viện Bạch Mai.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. FLOATING CURRICULUM MODULE CARDS (LEFT/CENTER) + CAS-STYLE QR & STATS (RIGHT) -->
+  <section class="middle-overlap-row">
+    <!-- Left/Center: 8 Standalone Floating Module Cards straddling the Central Polygon -->
+    <div class="curriculum-float-zone">
+      <div class="float-zone-header">
+        <div class="float-zone-title">Chương trình học chuyên sâu</div>
+        <span class="float-zone-badge">08 học phần cốt lõi</span>
+      </div>
+
+      <div class="modules-grid-8">
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 01</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+          </div>
+          <h3>Đột quỵ và bệnh lý mạch máu não</h3>
+          <p>Hình ảnh học CT, CTA, CTP, MRI khuếch tán, DSA; tiêu huyết khối (IVT) &amp; lấy huyết khối cơ học (EVT).</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 02</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+            </div>
+          </div>
+          <h3>Bệnh lý thần kinh</h3>
+          <p>Định khu tổn thương thần kinh trung ương và chẩn đoán căn nguyên chuyên sâu theo TOAST / SSS-TOAST.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 03</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+          </div>
+          <h3>Hồi sức cấp cứu – chống độc</h3>
+          <p>Hồi sức thần kinh (Neuro-ICU), kiểm soát huyết áp, xử trí phù não ác tính, ICH, SAH, CVT &amp; siêu âm TCD.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 04</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/></svg>
+            </div>
+          </div>
+          <h3>Phẫu thuật thần kinh</h3>
+          <p>Chỉ định mở sọ giải ép, phẫu thuật lấy máu tụ nội sọ, xử trí túi phình/dị dạng mạch (AVM) &amp; CEA.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 05</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+          </div>
+          <h3>Phục hồi chức năng sau đột quỵ</h3>
+          <p>Phục hồi chức năng thần kinh sớm đa mô thức: vận động, ngôn ngữ trị liệu &amp; tầm soát rối loạn nuốt.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 06</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 1 8 8c0 3.5-2 6-4 7.5V21H8v-3.5C6 16 4 13.5 4 10a8 8 0 0 1 8-8z"/></svg>
+            </div>
+          </div>
+          <h3>Bệnh lý tâm thần</h3>
+          <p>Chẩn đoán và quản lý suy giảm nhận thức – sa sút trí tuệ mạch máu (VCI), trầm cảm và sảng sau đột quỵ.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 07</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+          </div>
+          <h3>Bệnh lý tim và mạch máu</h3>
+          <p>Tầm soát lấp mạch từ tim (rung nhĩ, van tim), siêu âm Duplex mạch cảnh, điều trị nội khoa (BMT) &amp; đặt stent.</p>
+        </div>
+
+        <div class="mod-card">
+          <div class="mod-card-top">
+            <span class="mod-pill">Học phần 08</span>
+            <div class="mod-ic-circle">
+              <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
+          </div>
+          <h3>Nghiên cứu khoa học</h3>
+          <p>Phương pháp nghiên cứu lâm sàng, quản lý chất lượng WSO/ANGELS (RES-Q) và ứng dụng trí tuệ nhân tạo (AI).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: CAS-style QR Block + Epidemiological Metrics -->
+    <div class="right-polygon-panel">
+      <div class="cas-qr-box">
+        <div class="cas-qr-main">
+          <div class="cas-qr-img">
+            <img src="assets/img/qr.svg" alt="Mã QR Tuyển sinh UMP">
+          </div>
+          <div class="cas-qr-text">
+            <div class="q-kicker">Cổng thông tin tuyển sinh</div>
+            <div class="q-line">Tra cứu chi tiết chương trình tại:</div>
+            <div class="q-link">ump.vnu.edu.vn</div>
+            <div class="q-line" style="margin-top:0.8mm;">Hoặc liên hệ trực tiếp:</div>
+            <div class="q-mail">khoay.ump@vnu.edu.vn</div>
+          </div>
+        </div>
+        <div class="cas-addr-box">
+          <div><b>Văn phòng Bộ môn:</b> Trung tâm Đột quỵ, Tòa A10, BV Bạch Mai, 78 Giải Phóng, Hà Nội</div>
+          <div><b>Trụ sở Trường:</b> Nhà Y1, 144 Xuân Thủy (28 Phạm Văn Đồng), Cầu Giấy · <b>ĐT:</b> (024) 3745 0188</div>
+        </div>
+      </div>
+
+      <div class="mini-stats-grid">
+        <div class="m-stat-card">
+          <div class="ms-num">161 ca/100.000</div>
+          <div class="ms-lbl">Mắc mới hằng năm (≈ 157.295 ca/năm); hiện mắc 415/100.000 dân</div>
+        </div>
+        <div class="m-stat-card">
+          <div class="ms-num">81 → 316 đơn vị</div>
+          <div class="ms-lbl">Nhu cầu nhân lực chuẩn hóa vận hành 316 đơn vị đột quỵ toàn quốc</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BOTTOM WHITE ZONE: PROMINENT ADMISSION CRITERIA ("WHO CAN APPLY") + DEPARTMENT SHOWCASE -->
+  <section class="bottom-white-zone">
+    <!-- Left: Đối tượng đăng ký dự tuyển (Main Bottom Highlight) -->
+    <div class="admission-showcase">
+      <div class="sec-banner-head">
+        <h2>Đối tượng đăng ký dự tuyển</h2>
+        <span class="sec-badge">Quy chế tuyển sinh</span>
+      </div>
+
+      <div class="adm-stack-rows">
+        <div class="adm-wide-card">
+          <div class="adm-circle">01</div>
+          <div class="adm-wide-body">
+            <h3>Dự thi ngay sau khi tốt nghiệp đại học</h3>
+            <div class="adm-card-text">
+              Với thí sinh là <b>cán bộ của các Trường Đại học Y Dược</b> hoặc <b>bác sĩ của các bệnh viện thực hành chính</b> của các Trường Đại học Y Dược: <b>được dự thi ngay sau khi tốt nghiệp đại học</b>.
+            </div>
+          </div>
+          <div class="adm-right-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+        </div>
+
+        <div class="adm-wide-card card-02">
+          <div class="adm-circle">02</div>
+          <div class="adm-wide-body">
+            <h3>Các đối tượng thí sinh khác — Đáp ứng một trong các yêu cầu sau:</h3>
+            <ul class="adm-check-list">
+              <li>Có <b>chứng chỉ hành nghề y khoa</b> (giấy phép hành nghề); hoặc đã có <b>chứng chỉ cơ bản</b>;</li>
+              <li>Hoặc đã học tập/làm việc trong lĩnh vực chuyên ngành từ <b>18 tháng trở lên</b> tính đến ngày dự thi.</li>
+            </ul>
+          </div>
+          <div class="adm-right-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/><circle cx="15.5" cy="16.5" r="2.5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-bottom-bar">
+        <div class="ab-txt">
+          <b>Chuyên khoa phù hợp dự tuyển:</b> Bác sĩ Đa khoa, Cấp cứu, Hồi sức tích cực, Cấp cứu ngoại viện 115, Thần kinh, Đột quỵ, Nội khoa, Tim mạch, Chẩn đoán hình ảnh &amp; Phục hồi chức năng.
+        </div>
+        <div class="tier-pills-row">
+          <span class="t-pill">Cấp 1: Đội đột quỵ</span>
+          <span class="t-pill">Cấp 2: Đơn vị đột quỵ</span>
+          <span class="t-pill">Cấp 3: Khoa đột quỵ</span>
+          <span class="t-pill">Cấp 4: TT Đột quỵ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Đội ngũ giảng viên & Cơ sở thực hành -->
+    <div class="department-showcase">
+      <div class="sec-banner-head">
+        <h2 style="color:var(--teal-dark);">Đội ngũ giảng viên &amp; thực hành</h2>
+        <span class="sec-badge" style="background:var(--teal-dark);">Viện – Trường</span>
+      </div>
+
+      <div class="dept-content-grid">
+        <div class="dept-photo-wrap">
+          <span class="dp-badge">Trung tâm Đột quỵ – BV Bạch Mai</span>
+          <img src="original_design_assets/faculty_bomon_dotquy_cropped.jpg" alt="Đội ngũ cán bộ, giảng viên Bộ môn Đột quỵ và Bệnh lý mạch máu não">
+          <div class="dp-cap">Tập thể cán bộ, giảng viên Bộ môn tại Trung tâm Đột quỵ – BV Bạch Mai</div>
+        </div>
+
+        <div class="dept-faculty-stack">
+          <div class="df-card">
+            <div class="df-role">Trưởng Bộ môn</div>
+            <div class="df-name">PGS.TS. Mai Duy Tôn</div>
+            <div class="df-pos">Giám đốc Trung tâm Đột quỵ, Bệnh viện Bạch Mai</div>
+          </div>
+
+          <div class="df-card navy-l">
+            <div class="df-role" style="color:var(--navy);">Phó Trưởng Bộ môn</div>
+            <div class="df-name">PGS.TS. Trần Anh Tuấn</div>
+            <div class="df-pos">Trường Đại học Y Dược – ĐHQGHN</div>
+          </div>
+
+          <div class="df-card">
+            <div class="df-role">Phó Trưởng Bộ môn</div>
+            <div class="df-name">TS. Đào Việt Phương</div>
+            <div class="df-pos">Trung tâm Đột quỵ – Bệnh viện Bạch Mai</div>
+          </div>
+
+          <div class="df-card navy-l" style="background:#FFFBEB; border-color:#F59E0B; border-left-color:#D97706;">
+            <div class="df-pos" style="color:#78350F; font-weight:700;">
+              🏆 <b>Bằng khen Giám đốc ĐHQGHN</b> năm 2024 &amp; 2025 về thành tích NCKH xuất sắc.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER STRIP -->
+  <footer class="footer-strip">
+    <div class="f-left">
+      “Cùng kiến tạo cơ hội và chia sẻ thành quả” <span>— Together we create opportunities and share achievement</span>
+    </div>
+    <div class="f-right">
+      Đột quỵ – Mỗi phút giây đều quý giá &nbsp;|&nbsp; Time is brain
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

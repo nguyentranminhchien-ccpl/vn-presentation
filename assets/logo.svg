@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B4630"/>
+      <stop offset="55%" stop-color="#008A3C"/>
+      <stop offset="100%" stop-color="#12284C"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer square with 10% margin (24px margin on 256x256) -->
+  <rect x="24" y="24" width="208" height="208" rx="38" fill="url(#bgGrad)"/>
+  <!-- Angled CAS-style polygon ribbon inside -->
+  <polygon points="24,78 232,96 232,174 24,156" fill="#083825" opacity="0.55"/>
+  <!-- Landscape Poster / Slide Frame -->
+  <rect x="48" y="56" width="160" height="114" rx="12" fill="#FFFFFF" stroke="url(#goldGrad)" stroke-width="5"/>
+  <!-- Top header bar inside poster -->
+  <rect x="58" y="66" width="90" height="10" rx="4" fill="#12284C"/>
+  <circle cx="190" cy="71" r="6" fill="#008A3C"/>
+  <circle cx="174" cy="71" r="6" fill="#D9232A"/>
+  <!-- Center Angled Hero Banner inside poster -->
+  <polygon points="56,84 200,90 200,124 56,118" fill="#008A3C"/>
+  <rect x="76" y="95" width="104" height="7" rx="3.5" fill="#FDE047"/>
+  <rect x="92" y="106" width="72" height="6" rx="3" fill="#FFFFFF"/>
+  <!-- 3 Floating Module Cards inside poster -->
+  <rect x="58" y="128" width="42" height="32" rx="5" fill="#F3FAF6" stroke="#008A3C" stroke-width="2.5"/>
+  <rect x="107" y="128" width="42" height="32" rx="5" fill="#F6F9FC" stroke="#12284C" stroke-width="2.5"/>
+  <rect x="156" y="128" width="42" height="32" rx="5" fill="#F3FAF6" stroke="#008A3C" stroke-width="2.5"/>
+  <!-- Medical Cross & Pulse Wave Badge at Bottom -->
+  <path d="M68 202 H108 L116 186 L126 216 L136 194 L144 202 H188" fill="none" stroke="#FDE047" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

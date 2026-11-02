@@ -1,0 +1,15 @@
+{
+  "name": "vn-medical-studio",
+  "displayName": "VN Medical Studio (Poster, Slide & Translation)",
+  "description": "Bộ công cụ chuyên biệt thiết kế Poster hội nghị y khoa khổ ngang (chuẩn Davies et al., Clinical Nutrition ESPEN 2024 & CAS in Brain Health), Tờ rơi A4 2 mặt, Slide bài giảng lâm sàng / HNKH và dịch thuật y khoa học thuật chuẩn phong cách BS. Nguyễn Trần Minh Chiến.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BS. Nguyễn Trần Minh Chiến"
+  },
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "Thiết kế poster hội nghị y khoa khổ ngang 120x90 cm và tờ rơi A4 2 mặt từ tài liệu trong thư mục",
+    "Tạo bộ slide báo cáo hội nghị khoa học (HNKH) 16:9 kèm Speaker Notes từ bài báo hoặc đề cương",
+    "Dịch bài báo y học quốc tế sang tiếng Việt lâm sàng chuẩn Sentence-case và tóm tắt thành poster/slide"
+  ]
+}
